@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="styles.css">
+        <title>JSON Song List</title>
+
+        <script>
+
+        function displayTable(objSong) {
+                console.log("8: get here" + objSong.length);
+                
+                for (i = 0; i < objSong.length; i++) {
+                    $("#s-table").append(
+                        '<tr>' +
+                            '<td>' + 
+                                objSong[i].title + 
+                            '</td><td>' + 
+                                objSong[i].artist + 
+                            '</td><td>' + 
+                                objSong[i].genre + 
+                            '</td><td>' + 
+                                objSong[i].year + 
+                            '</td>' +
+                        '</tr>'
+                    );
+                }
+            }
+
+        const songlist = [];
+        function filtergenre(objSong){
+
+            document.getElementById("f-table").innerHTML = "";
+            
+            if(objSong){
+                for (i = 0; i < objSong.length; i++){
+                    songlist[i] = objSong[i];
+                }
+
+            } else {
+                for (j = 0; j < songlist.length; j++) {
+                    if($("select option:selected").val() == songlist[j].genre){
+                        $("#f-table").append(
+                            '<tr>' +
+                                '<td>' + 
+                                    songlist[j].title + 
+                                '</td><td>' + 
+                                    songlist[j].artist + 
+                                '</td><td>' + 
+                                    songlist[j].genre + 
+                                '</td><td>' + 
+                                    songlist[j].year + 
+                                '</td>' +
+                            '</tr>'
+                        );
+                    }
+                }
+            }
+
+        }
+
+        function loadFile() {
+                var strSong;
+                var objSong;
+                var returnHTML;
+
+                request = new XMLHttpRequest();
+                console.log("1: created request");
+                request.open("GET", "songs.json", true);
+                console.log("2: open success");
+
+			    request.onreadystatechange = function() {
+				    console.log("3:  event fired");
+                    
+                    if (request.readyState == 4 && request.status == 200) {
+
+                        console.log("5:  data is ready");
+                        result = request.responseText;
+                        returnHTML = result;
+                        objSong = JSON.parse(result);
+                        strSong = JSON.stringify(objSong);
+
+                        returnHTML = "<br>"+ strSong;
+
+                        document.getElementById("p1").innerHTML = returnHTML;
+
+                        displayTable(objSong);
+                        filtergenre(objSong);
+        
+                    }
+                    else if (request.readyState == 4 && request.status != 200) {
+
+                        document.getElementById("p1").innerHTML = "Whoops, something went terribly wrong!";
+
+                    }
+
+                    else if (request.readyState == 3) {
+
+                        console.log("6:  ready state 3- request received,data being sent");
+                        document.getElementById("p1").innerHTML = "Come back soon!";
+
+                    } else {
+                        console.log("7: loading request");
+                    }
+
+			    }
+
+                request.send();
+                console.log("4 request sent");
+                
+        }
+            
+        </script>
+
+    </head>
+
+    <body onload="loadFile()">
+        <h1> JSON Song List </h1>
+
+        <h2>Serialize and display</h2>
+        <p id="p1"></p>
+        
+        <h2>User friendly display</h2>
+        <table id="s-table">
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Genre</th>
+                <th>Year Released</th>
+            </tr>
+        </table> 
+
+        <h2>Filter the data</h2>
+        <form>
+            <select id="filter">
+                <option value="none" selected disabled hidden>
+                                                Select a Genre</option>
+                <option value="Reggae">Reggae</option>
+                <option value="Folk Rock">Folk Rock</option>
+                <option value="MPB">MPB</option>
+                <option value="Indie Rock">Indie Rock</option>
+                <option value="Pop">Pop</option>
+                <option value="Mangue Beat">Mangue Beat</option>
+                <option value="Bossa Nova">Bossa Nova</option>
+                <option value="Rap">Rap</option>
+                <option value="Electronic">Electronic</option>
+                <option value="Samba">Samba</option>
+            </select>
+            <input type="button" id="filter-btn" value="Filter" onclick="filtergenre()"> 
+            <table>
+                <tr id="f-table"></tr>
+            </table>
+        </form>
+    </body>
+</html>

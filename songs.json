@@ -1,0 +1,74 @@
+[
+        {
+            "title" : "Brasiliana",
+            "artist" : "BaianaSystem",
+            "genre" : ["Reggae"],
+            "year" : "2021"
+        },
+        {
+            "title" : "Sleep on the floor",
+            "artist" : "The Lumineers",
+            "genre" : ["Folk Rock"],
+            "year" : "2016"
+        },
+        {
+            "title" : "Bem que se quis",
+            "artist" : "Marisa Monte",
+            "genre" : ["MPB"],
+            "year" : "1989"
+        },
+        {
+            "title" : "Dandelion",
+            "artist" : "Jealous of the Birds",
+            "genre" : ["Indie Rock"],
+            "year" : "2016"
+        },
+        {
+            "title" : "Blossom",
+            "artist" : "Milky Chance",
+            "genre" : ["Pop"],
+            "year" : "2017"
+        },
+        {
+            "title" : "Elephant Gun",
+            "artist" : "Beirut",
+            "genre" : ["Indie Rock"],
+            "year" : "2006"
+        },
+        {
+            "title" : "Novas Auroras",
+            "artist" : "Nação Zumbi",
+            "genre" : ["Mangue Beat"],
+            "year" : "2014"
+        },
+        {
+            "title" : "Moça",
+            "artist" : "Mariana Froes",
+            "genre" : ["MPB"],
+            "year" : "2019"
+        },
+        {
+            "title" : "La rua madureira",
+            "artist" : "Pauline Croze",
+            "genre" : ["Bossa Nova"],
+            "year" : "2016"
+        },
+        {
+            "title" : "Pequenas alegrias da vida adulta",
+            "artist" : "Emicida",
+            "genre" : ["Rap"],
+            "year" : "2019"
+        },
+        {
+            "title" : "Something Just Like This",
+            "artist" : "The Chainsmokers/Coldplay",
+            "genre" : ["Electronic"],
+            "year" : "2018"
+        },
+        {
+            "title" : "O mundo é um moinho",
+            "artist" : "Beth Carvalho",
+            "genre" : ["Samba"],
+            "year" : "1977"
+        }
+]
